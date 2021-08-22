@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: wp-mpdf
-Plugin URI: https://fkrauthan.de/projects/php/wp-mpdf.html
+Plugin URI: https://github.com/jmenges/wp-mpdf
 Description: Print a wordpress page as PDF with optional Geshi Parsing.
-Version: 3.6.1
-Author: Florian 'fkrauthan' Krauthan
-Author URI: http://fkrauthan.de
+Version: 3.7.1
+Author: Florian 'fkrauthan' Krauthan, Jonas Menges
+Author URI: http://fkrauthan.de / https://github.com/jmenges/wp-mpdf
 
 Copyright 2021  Florian Krauthan
 */
@@ -26,11 +26,8 @@ Copyright 2021  Florian Krauthan
 
  Call order:
  
- 
  cron job calls mpdf_cron_generate_pdfs()
  -> mpdf_exec( 'false' , $post->ID ) for each post
- 
- 
  
  */
 
