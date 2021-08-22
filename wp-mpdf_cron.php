@@ -11,6 +11,8 @@
  */
 
 function mpdf_cron_generate_pdfs() {
+	mpdf_log("------mpdf_cron_generate_pdfs()-------");
+
 	global $wpdb;
 
 	//Check if Caching is enabled or not
@@ -37,10 +39,20 @@ function mpdf_cron_generate_pdfs() {
 
 		//Cache the posts
 		$_GET['output'] = 'pdf';
-		echo "Start cache creating\n";
+		mpdf_log("Start cache creating");
 
-		$posts = get_posts( 'numberposts=-1&order=ASC&orderby=title' );
+		$args = array(
+			'numberposts' => -1,
+			'order'   => 'ASC',
+			'orderby' => 'title'
+		);
+		$posts = get_posts($args);
+		if (empty($posts)){
+			mpdf_log('No posts available for caching');
+		}
 		foreach ( $posts as $post ) {
+			mpdf_log("Create cache for post: " . $post->ID );
+
 			if ( $post->post_title == '' ) {
 				echo "Skip post creating: No Title (" . $post->ID . ")\n";
 				continue;
@@ -48,12 +60,11 @@ function mpdf_cron_generate_pdfs() {
 
 			echo "Create cache for post (" . $post->ID . ")\n";
 
-
 			query_posts( 'p=' . $post->ID );
-			mpdf_exec( 'false' );
+			mpdf_exec( 'false' , $post->ID );
 		}
 
-		echo "Caching finished\n";
+		mpdf_log("Caching finished");
 	} finally {
 		wp_set_current_user( $oldUser->ID );
 	}
