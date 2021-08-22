@@ -1,12 +1,16 @@
 # wp-mpdf #
 
-**Contributors:** fkrauthan  
+**Contributors:** fkrauthan  , jmenges
 **Donate link:** [fkrauthan.de](https://fkrauthan.de)  
 **Wordpress plugin page:** [wordpress.org/plugins/wp-mpdf/](https://wordpress.org/plugins/wp-mpdf/)  
 **Tags:** print, printer, wp-mpdf, pdf, mpdf  
 **Requires at least:** 2.9  
 **Tested up to:** 5.7.2
 **Stable tag:** 3.6.1
+
+
+FORK of the original plugin with additional options for setting the theme on a post level and some other minor tweeks.
+
 
 Print Wordpress posts as PDF. Optional with Geshi highlighting.
 
