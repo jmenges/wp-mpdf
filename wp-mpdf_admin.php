@@ -11,7 +11,9 @@
  */
 
 function mpdf_admin_display() {
-	echo '<h1>Configure wp-mpdf</h1>';
+	$mpdf_url = admin_url('options-general.php?page=wp-mpdf');
+
+	echo '<h1>Configure wp-mpdf</h1><a class="button-secondary" href="' . $mpdf_url . '">Reload</a>';
 	echo '<table style="width: 100%;" border="0">';
 	echo '<tr><td style="vertical-align: top;">';
 	mpdf_admin_options();
@@ -71,6 +73,9 @@ function mpdf_admin_find_users() {
 }
 
 function mpdf_admin_options() {
+	error_log("-----mpdf_admin_options()----");
+
+
 	echo '<h2>Options</h2>';
 
 	$themes           = mpdf_admin_find_themes();
@@ -98,6 +103,7 @@ function mpdf_admin_options() {
 		if ( in_array( $_POST['theme'], $themes ) ) {
 			update_option( 'mpdf_theme', $_POST['theme'] );
 		}
+
 		if ( in_array( $_POST['codepage'], $CODEPAGES_ARRAY ) ) {
 			update_option( 'mpdf_code_page', $_POST['codepage'] );
 		}
